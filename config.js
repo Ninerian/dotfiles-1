@@ -43,16 +43,17 @@ module.exports = {
     'vim --with-override-system-vi',
     'watch',
     // Install wget with IRI support
-    'wget --enable-iri'
+    'wget --enable-iri',
+    'git-extras'
   ],
   cask: [
     //'adium',
     //'amazon-cloud-drive',
-    //'atom',
-    'box-sync',
+    'atom',
+    // 'box-sync',
     //'comicbooklover',
     //'diffmerge',
-    //'dropbox',
+    'dropbox',
     //'evernote',
     'gpgtools',
     //'ireadfast',
@@ -66,7 +67,7 @@ module.exports = {
     'the-unarchiver',
     //'torbrowser',
     //'transmission',
-    //'vlc',
+    'vlc',
     'xquartz'
   ],
   gem: [
@@ -80,6 +81,7 @@ module.exports = {
     'npm-check',
     'yo',
     'generator-dockerize',
+    'grunt',
     'gulp',
     'prettyjson',
     'trash',
