@@ -15,7 +15,7 @@ module.exports = {
     'gawk',
     // http://www.lcdf.org/gifsicle/ (because I'm a gif junky)
     'gifsicle',
-    'gnupg',
+  //  'gnupg',
     // Install GNU `sed`, overwriting the built-in `sed`
     // so we can do "sed -i 's/foo/bar/' file" instead of "sed -i '' 's/foo/bar/' file"
     'gnu-sed --with-default-names',
@@ -49,13 +49,13 @@ module.exports = {
     //'adium',
     //'amazon-cloud-drive',
     //'atom',
-    'box-sync',
+    //'box-sync',
     //'comicbooklover',
     //'diffmerge',
-    //'dropbox',
+    'dropbox',
     //'evernote',
-    'gpgtools',
-    //'ireadfast',
+    //'gpgtools',
+    'ireadfast',
     'iterm2',
     'little-snitch',
     'micro-snitch',
@@ -66,7 +66,7 @@ module.exports = {
     'the-unarchiver',
     //'torbrowser',
     //'transmission',
-    //'vlc',
+    'vlc',
     'xquartz'
   ],
   gem: [
@@ -80,6 +80,7 @@ module.exports = {
     'npm-check',
     'yo',
     'generator-dockerize',
+    'grunt',
     'gulp',
     'prettyjson',
     'trash',
