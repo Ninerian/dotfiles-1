@@ -230,18 +230,10 @@ done
 popd > /dev/null 2>&1
 
 
-<<<<<<< HEAD
-bot "Installing vim plugins"
- vim +PluginInstall +qall > /dev/null 2>&1
-||||||| merged common ancestors
-+bot "Installing vim plugins"
- +vim +PluginInstall +qall > /dev/null 2>&1
-=======
 bot "Installing vim plugins"
 # cmake is required to compile vim bundle YouCompleteMe
 # require_brew cmake
 vim +PluginInstall +qall > /dev/null 2>&1
->>>>>>> master
 
 bot "installing fonts"
 ./fonts/install.sh
