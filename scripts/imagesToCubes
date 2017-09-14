@@ -1,0 +1,256 @@
+#!/bin/bash
+readonly PROGDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+readonly krpanoPath=/Users/danielgrosse/Projekte/krpano-1.19-pr8
+
+
+function usage(){
+    echo
+    echo
+    echo usage:
+    echo $0' <path to the unprocessed files>' $1' <path to logo file>' $2 ' <output directory' $3
+    echo
+    echo
+    echo 'Adds the logo stripe to the files converts them into a link image and generates the cube images'
+    echo
+    echo
+    echo 'All output files are created in the current working directory and named according to the input file'\''s name'
+    echo
+    echo
+}
+
+# exactly one argument required
+if [[ ($# -ne 1) && ($# -ne 2) && ($# -ne 3) ]]
+then
+    usage
+    exit 1
+fi
+
+INDIRECTORY=$(realpath $1)
+echo $INDIRECTORY
+
+if [ ! -d $INDIRECTORY ];
+then
+    echo 'Input directory does not exist'
+    exit 2
+fi
+
+if [ -z "$3" ];
+then
+    RESULTDIR=${PWD##*/}
+else
+    RESULTDIR=$(realpath $3)
+fi
+
+if [ ! -z "$2" ];
+then
+    readonly LOGOFILE=$(realpath $2)
+    if [ ! -f $LOGOFILE ];
+    then
+        echo 'Logofile does not exist'
+        exit 2
+    fi
+
+else
+    readonly LOGOFILE=""
+fi
+
+
+
+#readonly RESULTDIR="../converted";
+readonly SHARPENDIR="sharpen";
+
+
+function sharpen() {
+    #echo "param1" $1;
+    #echo "param2" $2;
+
+    if [ ! -d "$2/$SHARPENDIR" ];
+    then
+        mkdir "$2/$SHARPENDIR"
+    fi
+
+    if [ ! -f "$2/$SHARPENDIR/$1" ]
+    then
+        echo "Sharpening $1";
+        echo "****************************"
+        $PROGDIR/binomial "$1" "sharpen/$1"
+    fi
+}
+
+function getImageSize() {
+    identify "$1"[0] | grep -Eo '[0-9]+x[0-9]+ '
+}
+
+function addLogoToBottom() {
+    image=$1
+    ext=$2
+    logo=$3
+    size=$4
+
+    if [ ! -z "$logo" ];
+    then
+        convert "$image""[0]" -layers flatten -extent "$size" "$logo" -gravity south -compose over -composite "$RESULTDIR/${image%.*}".jpg;
+    else
+        convert "$image""[0]" -layers flatten "$RESULTDIR/${image%.*}".jpg;
+    fi
+
+}
+
+function convertImage() {
+    image=$1
+    ext=$2
+    logo=$3
+    size=10000x5000
+
+    date1=$(date +"%s");
+    date2=0;
+    counter=$5;
+    maxCount=$4;
+
+    echo "Processing $counter / $maxCount";
+
+    if [ "${image/$window}" = "$image" ];
+    then
+        #sharpen "$image" "$folderName";
+        if [ ! -f "$RESULTDIR/${image%.*}.jpg" ]
+        then
+            echo "Wandle $image um";
+            echo "****************************"
+            addLogoToBottom "$image" "$ext" "$logo" "$size";
+
+            #echo \
+            #echo "convert complete"
+            #echo "****************************"
+            date2=$(date +"%s");
+        fi
+        if [ ! -d "$RESULTDIR/${image%.*}" ]
+        then
+            echo "erstelle Kacheln"
+            $krpanoPath/krpanotools makepano -quiet=false -config=$krpanoPath/templates/multires_10000.config "$RESULTDIR/${image%.*}".jpg;
+            date2=$(date +"%s");
+        fi
+
+        if [ ! -f "$RESULTDIR/verlinkung/${image%.*}.jpg" ]
+        then
+            echo "erstelle Verlinkunsbild"
+            convert "$RESULTDIR/${image%.*}".jpg -thumbnail 1500x750 -quality 60 "$RESULTDIR/verlinkung/${image%.*}".jpg
+            date2=$(date +"%s");
+        fi
+
+    fi
+
+     if [ "$date2" -ne "0" ]
+     then
+         difference=$((date2 - date1));
+         timeNeeded=$(((maxCount - counter) * difference));
+
+         echo "Noch $(($timeNeeded / 60)) Minuten und $(($timeNeeded % 60)) Sekunden bis dieser Durchgang fertig ist.";
+     fi
+}
+
+function sendFinishMessage() {
+
+    fileFormat=$1
+    folderName=$2
+
+    text="@danielgrosse Alle $fileFormat in $folderName bearbeitet und gespeichert. :thumbsup:";
+    payload=("payload={\"channel\":\"#intern\",\"link_names\":1,\"text\":${text// - /-}}");
+    # echo $text;
+    # echo $payload;
+
+    curl -X POST --data-urlencode $payload "https://diginetmedia.slack.com/services/hooks/incoming-webhook?token=DlTPpDaVywNXlgHC2jjS4pCl"
+
+}
+
+# folders=("$hotel")
+
+
+# extension=()
+# if [ "$psdCount" -gt 1 ]
+#       then
+#       extension+=("psd")
+# fi
+
+# if [ "$psbCount" -gt 1 ]
+#       then
+#       extension+=("psb")
+# fi
+# 
+
+echo_var(){
+    echo "X" $1 $2 $3 $4 
+return 0
+}
+function convertImages() {
+    window="_f"
+
+
+
+    #echo $year;
+    #echo "$br_2012"
+    #folderNameCombined="br_${object}"
+    folderName=${INDIRECTORY}
+    logo=${LOGOFILE}
+
+    echo "$logo"
+    echo "$folderName"
+    cd "$folderName";
+    shopt -s nullglob;
+    
+    psds=(*.psd)
+    psdCount=$(echo ${#psds[@]})
+    psbs=(*.psb)
+    psbCount=$(echo ${#psbs[@]})
+    jpgs=(*.jpg)
+    jpgCount=$(echo ${#jpgs[@]})
+    counter=0
+    echo "psdCount " $psdCount;
+    echo "jpgCount " $jpgCount;
+    
+    numProc=$(sysctl -n hw.physicalcpu)
+
+
+    if [ ! -d "$RESULTDIR" ];
+    then
+        mkdir  "$RESULTDIR"
+    fi
+
+    if [ ! -d "$RESULTDIR/verlinkung" ];
+    then
+        mkdir  "$RESULTDIR/verlinkung"
+    fi
+
+    
+    for image in ${psds[@]}; do
+      counter=$((counter+1));
+      convertImage "$image" "psd" "$logo" "$psdCount" "$counter";
+    done
+
+    counter=0;
+
+    for image in ${jpgs[@]}
+    do
+      counter=$((counter+1));
+      convertImage "$image" "jpg" "$logo" "$jpgCount" "$counter";
+    done
+
+}
+
+
+convertImages;
+
+# for ext in "${extension[@]}"; do
+#       filetype="$ext"
+#       images=("*.$filetype")
+#       for image in "${images[@]}"; do
+#               echo "Image " "$image"
+#               echo "Ext " "$ext"
+#               convertImages "$image" "$ext"
+# done
+
+# sendFinishMessage "$ext" "${folderName}"
+
+
+
+    # sendFinishMessage "JPG" "${folderName}"

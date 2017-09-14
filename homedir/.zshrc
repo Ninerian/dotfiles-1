@@ -36,7 +36,8 @@ source $ZSH/oh-my-zsh.sh
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
-source /usr/local/opt/nvm/nvm.sh
+#source /usr/local/opt/nvm/nvm.sh
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
 autoload -U add-zsh-hook
 load-nvmrc() {
@@ -56,3 +57,9 @@ unsetopt correct
 fortune
 
 export PATH="$HOME/.yarn/bin:$PATH"
+
+PATH="/Users/danielgrosse/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PERL5LIB="/Users/danielgrosse/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="/Users/danielgrosse/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"/Users/danielgrosse/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/Users/danielgrosse/perl5"; export PERL_MM_OPT;
