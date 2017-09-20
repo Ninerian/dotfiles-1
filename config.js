@@ -46,19 +46,10 @@ module.exports = {
   cask: [
     //'adium',
     //'amazon-cloud-drive',
-<<<<<<< HEAD
-    'atom',
     // 'box-sync',
-||||||| merged common ancestors
-    //'atom',
-    //'box-sync',
-=======
-    //'atom',
-    // 'box-sync',
->>>>>>> be5a8693ae9a1e5992a30a7e58e8f2b7531c0e0c
     //'comicbooklover',
     //'diffmerge',
-    //'dropbox',
+    'dropbox',
     //'evernote',
     'gpgtools',
     //'ireadfast',
@@ -72,7 +63,8 @@ module.exports = {
     'the-unarchiver',
     //'torbrowser',
     //'transmission',
-    //'vlc',
+    'visual-studio-code',
+    'vlc',
     'xquartz'
   ],
   gem: [
@@ -83,6 +75,9 @@ module.exports = {
     'buzzphrase',
     'eslint',
     'instant-markdown-d',
+    'npm-check',
+    'yo',
+    'grunt',
     // 'generator-dockerize',
     'gulp',
     'npm-check',
