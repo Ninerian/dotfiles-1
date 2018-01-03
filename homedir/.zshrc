@@ -41,14 +41,16 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 
 autoload -U add-zsh-hook
 load-nvmrc() {
-  if [[ -f .nvmrc && -r .nvmrc ]]; then
-    nvm use &> /dev/null
-  elif [[ $(nvm version) != $(nvm version stable)  ]]; then
-    nvm use stable &> /dev/null
-  fi
+	if [[ -f .nvmrc && -r .nvmrc ]]; then
+		nvm use &>/dev/null
+	elif [[ $(nvm version) != $(nvm version stable) ]]; then
+		nvm use stable &>/dev/null
+	fi
 }
 add-zsh-hook chpwd load-nvmrc
 load-nvmrc
+
+if which rbenv >/dev/null; then eval "$(rbenv init -)"; fi
 
 # Customize to your needs...
 unsetopt correct
@@ -58,8 +60,13 @@ fortune
 
 export PATH="$HOME/.yarn/bin:$PATH"
 
-PATH="/Users/danielgrosse/perl5/bin${PATH:+:${PATH}}"; export PATH;
-PERL5LIB="/Users/danielgrosse/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
-PERL_LOCAL_LIB_ROOT="/Users/danielgrosse/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
-PERL_MB_OPT="--install_base \"/Users/danielgrosse/perl5\""; export PERL_MB_OPT;
-PERL_MM_OPT="INSTALL_BASE=/Users/danielgrosse/perl5"; export PERL_MM_OPT;
+PATH="/Users/danielgrosse/perl5/bin${PATH:+:${PATH}}"
+export PATH
+PERL5LIB="/Users/danielgrosse/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"
+export PERL5LIB
+PERL_LOCAL_LIB_ROOT="/Users/danielgrosse/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"
+export PERL_LOCAL_LIB_ROOT
+PERL_MB_OPT="--install_base \"/Users/danielgrosse/perl5\""
+export PERL_MB_OPT
+PERL_MM_OPT="INSTALL_BASE=/Users/danielgrosse/perl5"
+export PERL_MM_OPT

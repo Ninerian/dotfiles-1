@@ -7,7 +7,24 @@ export PATH=/usr/local/sbin:$PATH
 export PATH=/usr/local/bin:$PATH
 
 # GO
-#export PATH=$PATH:/usr/local/opt/go/libexec/bin
+export PATH=$PATH:/usr/local/opt/go/libexec/bin
+export PATH=$PATH:$HOME/.go/bin
+
+#PATH=/usr/local/bin
+#PATH=$PATH:/usr/local/sbin
+#PATH=$PATH:/usr/bin
+#PATH=$PATH:/bin
+#PATH=$PATH:/usr/sbin
+#PATH=$PATH:/sbin
+#PATH=$PATH:/opt/local/bin
+#PATH=$PATH:/opt/local/sbin
+#PATH=$PATH:/bin
+export PATH=$PATH:$HOME/.rbenv/bin
+export PATH=$PATH:~/.rvm/bin
+export PATH=$PATH:~/utils
+#PATH=$PATH:"$(brew --prefix homebrew/php/php56)/bin:$PATH"
+
+
 
 # The next line updates PATH for the Google Cloud SDK.
 #source "/Users/$(whoami)/Downloads/google-cloud-sdk/path.zsh.inc"
