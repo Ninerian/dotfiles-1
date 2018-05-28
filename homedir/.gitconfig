@@ -1,6 +1,6 @@
 [user]
   name = Daniel Große
-  email = hallo@daniel-der-grosse.de
+  email = daniel.grosse@staffbase.com
 [github]
   # https://github.com/blog/180-local-github-config
   user = Ninerian
@@ -186,7 +186,7 @@
   clean = expand -t 4
 
 [push]
-  default = matching
+  default = simple
 	followTags = true
 
 [filter "media"]

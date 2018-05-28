@@ -54,6 +54,7 @@ module.exports = {
     //'evernote',
     "gpgtools",
     //'ireadfast',
+    'visual-studio-code',
     "iterm2",
     "little-snitch",
     "micro-snitch",
@@ -61,13 +62,14 @@ module.exports = {
     "sizeup",
     //'sketchup',
     "slack",
+    'hipchat',
     "the-unarchiver",
     //'torbrowser',
     //'transmission',
-    //'vlc',
-    "xquartz"
+    'vlc',
+    // "xquartz"
   ],
-  gem: ["git-up"],
+  gem: [],
   npm: [
     "antic",
     "buzzphrase",
@@ -75,6 +77,8 @@ module.exports = {
     "instant-markdown-d",
     // 'generator-dockerize',
     "gulp",
+    
+"grunt",
     "npm-check",
     "prettyjson",
     "trash",

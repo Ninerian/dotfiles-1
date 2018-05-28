@@ -30,7 +30,7 @@ export DISABLE_AUTO_TITLE="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.dotfiles/oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(colorize compleat dirpersist autojump git git-extras gulp history cp adb git-flow-avh grunt lein osx z)
+plugins=(common-aliases colorize compleat dirpersist autojump git git-extras gulp history cp adb git-flow-avh grunt lein osx z docker docker-compose)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -55,4 +55,3 @@ unsetopt correct
 # run fortune on new terminal :)
 fortune
 
-export PATH="$HOME/.yarn/bin:$PATH"
