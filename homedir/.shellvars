@@ -20,8 +20,11 @@ export MYDEVAPPS=/Applications/Dev
 #export JAVA_HOME=/Library/Java/Home
 #export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Versions/CurrentJDK/Home
 JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
-#export GOPATH=/usr/local/bin
+export GOPATH=/Users/danielgrosse/dev/go
 #export GROOVY_HOME=/usr/local/opt/groovy/libexec
+export ANDROID_HOME=~/Library/Android/sdk
+export ANDROID_SDK_ROOT="/usr/local/share/android-sdk"
+export GRAALVM_HOME=/Users/danielgrosse/dev/graalvm-ce-1.0.0-rc9/Contents/Home
 
 #########################################################################
 # Tool settings

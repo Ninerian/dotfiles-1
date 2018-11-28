@@ -27,10 +27,11 @@ export CASE_SENSITIVE="true"
 
 # disable autosetting terminal title.
 export DISABLE_AUTO_TITLE="true"
+export ZSH_DISABLE_COMPFIX="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.dotfiles/oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(common-aliases colorize compleat dirpersist autojump git git-extras gulp history cp adb git-flow-avh grunt lein osx z docker docker-compose)
+plugins=(common-aliases colorize compleat dirpersist autojump kube-ps1 git git-extras gulp history cp adb git-flow-avh grunt lein osx z docker docker-compose wakatime)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -40,11 +41,11 @@ source /usr/local/opt/nvm/nvm.sh
 
 autoload -U add-zsh-hook
 load-nvmrc() {
-  if [[ -f .nvmrc && -r .nvmrc ]]; then
-    nvm use &> /dev/null
-  elif [[ $(nvm version) != $(nvm version default)  ]]; then
-    nvm use default &> /dev/null
-  fi
+    if [[ -f .nvmrc && -r .nvmrc ]]; then
+        nvm use &> /dev/null
+        elif [[ $(nvm version) != $(nvm version default)  ]]; then
+        nvm use default &> /dev/null
+    fi
 }
 add-zsh-hook chpwd load-nvmrc
 load-nvmrc

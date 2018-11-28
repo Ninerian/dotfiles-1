@@ -2,7 +2,8 @@
 
 #################################
 # Simple Program Name Shortening
-alias g=git
+alias git='LANG=en_US git'
+alias g='LANG=en_US git'
 
 #############################
 # Utilities
