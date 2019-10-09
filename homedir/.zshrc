@@ -35,9 +35,7 @@ plugins=(colorize compleat dirpersist autojump git git-extras gulp history cp ad
 
 source $ZSH/oh-my-zsh.sh
 
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
-source /usr/local/opt/nvm/nvm.sh
+source /usr/local/opt/nvm/nvm.sh --no-use
 
 autoload -U add-zsh-hook
 load-nvmrc() {
