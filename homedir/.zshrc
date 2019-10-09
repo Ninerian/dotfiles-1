@@ -3,12 +3,18 @@ export ZSH=$HOME/.dotfiles/oh-my-zsh
 # if you want to use this, change your non-ascii font to Droid Sans Mono for Awesome
 # POWERLEVEL9K_MODE='awesome-patched'
 export ZSH_THEME="powerlevel9k/powerlevel9k"
+
+zsh_custom_kube_ps1(){
+    echo -n "$(_kube_ps1_symbol)$KUBE_PS1_SEPERATOR$KUBE_PS1_CONTEXT$KUBE_PS1_DIVIDER$KUBE_PS1_NAMESPACE"
+}
+POWERLEVEL9K_CUSTOM_KUBE_PS1='zsh_custom_kube_ps1'
+
 # export ZSH_THEME="agnoster"
 POWERLEVEL9K_SHORTEN_DIR_LENGTH=2
 # https://github.com/bhilburn/powerlevel9k#customizing-prompt-segments
 # https://github.com/bhilburn/powerlevel9k/wiki/Stylizing-Your-Prompt
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir nvm vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status history time)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status history time custom_kube_ps1)
 # colorcode test
 # for code ({000..255}) print -P -- "$code: %F{$code}This is how your text would look like%f"
 POWERLEVEL9K_NVM_FOREGROUND='000'
@@ -57,3 +63,8 @@ unsetopt correct
 # run fortune on new terminal :)
 # fortune
 
+
+# added by travis gem
+[ -f /Users/danielgrosse/.travis/travis.sh ] && source /Users/danielgrosse/.travis/travis.sh
+
+export PATH="/usr/local/opt/mongodb-community@3.6/bin:$PATH"

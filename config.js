@@ -71,15 +71,13 @@ module.exports = {
     'sizeup',
     //'sketchup',
     'slack',
-    'hipchat',
+    // 'hipchat',
     'the-unarchiver',
     //'torbrowser',
     //'transmission',
     'visual-studio-code',
     'vlc',
     'xquartz'
-  ],
-  gem: [
   ],
   gem: [],
   npm: [
