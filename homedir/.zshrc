@@ -2,28 +2,28 @@
 export ZSH=$HOME/.dotfiles/oh-my-zsh
 # if you want to use this, change your non-ascii font to Droid Sans Mono for Awesome
 # POWERLEVEL9K_MODE='awesome-patched'
-export ZSH_THEME="powerlevel9k/powerlevel9k"
+export ZSH_THEME="powerlevel10k/powerlevel10k"
 
-zsh_custom_kube_ps1(){
-    echo -n "$(_kube_ps1_symbol)$KUBE_PS1_SEPERATOR$KUBE_PS1_CONTEXT$KUBE_PS1_DIVIDER$KUBE_PS1_NAMESPACE"
-}
-POWERLEVEL9K_CUSTOM_KUBE_PS1='zsh_custom_kube_ps1'
+# zsh_custom_kube_ps1(){
+#     echo -n "$(_kube_ps1_symbol)$KUBE_PS1_SEPERATOR$KUBE_PS1_CONTEXT$KUBE_PS1_DIVIDER$KUBE_PS1_NAMESPACE"
+# }
+# POWERLEVEL9K_CUSTOM_KUBE_PS1='zsh_custom_kube_ps1'
 
 # export ZSH_THEME="agnoster"
-POWERLEVEL9K_SHORTEN_DIR_LENGTH=2
+# POWERLEVEL9K_SHORTEN_DIR_LENGTH=2
 # https://github.com/bhilburn/powerlevel9k#customizing-prompt-segments
 # https://github.com/bhilburn/powerlevel9k/wiki/Stylizing-Your-Prompt
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir nvm vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status history time custom_kube_ps1)
+# POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir nvm vcs)
+# POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status history time custom_kube_ps1)
 # colorcode test
 # for code ({000..255}) print -P -- "$code: %F{$code}This is how your text would look like%f"
-POWERLEVEL9K_NVM_FOREGROUND='000'
-POWERLEVEL9K_NVM_BACKGROUND='072'
-POWERLEVEL9K_SHOW_CHANGESET=true
+# POWERLEVEL9K_NVM_FOREGROUND='000'
+# POWERLEVEL9K_NVM_BACKGROUND='072'
+# POWERLEVEL9K_SHOW_CHANGESET=true
 #export ZSH_THEME="random"
 export TERM=xterm-256color
 
-# Set to this to use case-sensitive completion
+#s Set to this to use case-sensitive completion
 export CASE_SENSITIVE="true"
 
 # disable weekly auto-update checks
@@ -38,7 +38,7 @@ export ZSH_DISABLE_COMPFIX="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.dotfiles/oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(common-aliases colorize compleat dirpersist autojump kube-ps1 git git-extras gulp history cp adb git-flow-avh grunt lein osx z docker docker-compose wakatime)
+plugins=(common-aliases colorize compleat emacs dirpersist autojump kube-ps1 git git-extras gulp history cp adb git-flow-avh grunt lein osx z docker docker-compose wakatime)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -66,3 +66,6 @@ unsetopt correct
 [ -f /Users/danielgrosse/.travis/travis.sh ] && source /Users/danielgrosse/.travis/travis.sh
 
 export PATH="/usr/local/opt/mongodb-community@3.6/bin:$PATH"
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
