@@ -38,7 +38,7 @@ export ZSH_DISABLE_COMPFIX="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.dotfiles/oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(common-aliases colorize compleat emacs dirpersist autojump kube-ps1 git git-extras gulp history cp adb git-flow-avh grunt lein osx z docker docker-compose wakatime)
+plugins=(common-aliases colorize compleat emacs dirpersist kube-ps1 git git-extras gulp history cp adb git-flow-avh grunt lein osx z docker docker-compose zsh-wakatime)
 
 source $ZSH/oh-my-zsh.sh
 
