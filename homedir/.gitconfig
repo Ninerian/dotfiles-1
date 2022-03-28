@@ -48,6 +48,7 @@
   # prevent crlf (then you will have to deal with the problem -- dos2unix, etc)
   #safecrlf = true
   editor = vim
+  # editor = emacs
   #editor = subl -w
 
 [alias]
@@ -165,6 +166,7 @@
 
 [init]
   templatedir = ~/.dotfiles/.git_template
+	defaultBranch = main
 
 [mergetool]
   prompt = false
@@ -200,3 +202,7 @@
   clean = git-lfs clean %f
   smudge = git-lfs smudge %f
   required = true
+[pull]
+	rebase = false
+[http]
+	postBuffer = 524288000

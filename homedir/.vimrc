@@ -68,6 +68,7 @@ Plugin 'SuperTab'
 " Plugin 'leafgarland/typescript-vim'
 " Vue.js
 Plugin 'posva/vim-vue'
+" Plugin 'jooize/vim-colemak'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -147,7 +148,7 @@ set listchars=tab:>-,trail:- " show tabs and trailing whitespace
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Visual Cues
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set showmatch " show matching brackets
+set showmatch " show matching bracket
 set mat=5 " how many tenths of a second to blink matching brackets for
 set nohlsearch " do not highlight searched for phrases
 set incsearch " BUT do highlight as you type you search phrase
@@ -311,7 +312,7 @@ let g:netrw_altv = 1
 let g:netrw_winsize = 25 " width of dir explorer
 augroup ProjectDrawer
   autocmd!
-  autocmd VimEnter * :Vexplore
+"  autocmd VimEnter * :Vexplore
 augroup END
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

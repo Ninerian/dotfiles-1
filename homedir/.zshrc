@@ -1,3 +1,7 @@
+# Fig pre block. Keep at the top of this file.
+export PATH="${PATH}:${HOME}/.local/bin"
+eval "$(fig init zsh pre)"
+
 # Path to your oh-my-zsh configuration.
 export ZSH=$HOME/.dotfiles/oh-my-zsh
 # if you want to use this, change your non-ascii font to Droid Sans Mono for Awesome
@@ -38,7 +42,7 @@ export ZSH_DISABLE_COMPFIX="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.dotfiles/oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(common-aliases colorize compleat emacs dirpersist kube-ps1 git git-extras gulp history cp adb git-flow-avh grunt lein osx z docker docker-compose zsh-wakatime)
+plugins=(common-aliases colorize compleat dirpersist kube-ps1 git git-extras jenv history cp adb git-flow-avh grunt lein macos z docker docker-compose zsh-wakatime)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -61,11 +65,25 @@ unsetopt correct
 # run fortune on new terminal :)
 # fortune
 
+# Increase file limit
+ulimit -n 10240
 
-# added by travis gem
-[ -f /Users/danielgrosse/.travis/travis.sh ] && source /Users/danielgrosse/.travis/travis.sh
+# Set default java
 
 export PATH="/usr/local/opt/mongodb-community@3.6/bin:$PATH"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
+
+
+export PATH="$HOME/.poetry/bin:$PATH"
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+# Fig post block. Keep at the bottom of this file.
+eval "$(fig init zsh post)"
+

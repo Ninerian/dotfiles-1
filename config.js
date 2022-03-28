@@ -20,6 +20,7 @@ module.exports = {
     // http://www.lcdf.org/gifsicle/ (because I'm a gif junky)
     "gifsicle",
     "gnupg",
+    "git-delta",
     // Install GNU `sed`, overwriting the built-in `sed`
     // so we can do "sed -i 's/foo/bar/' file" instead of "sed -i '' 's/foo/bar/' file"
     "gnu-sed --with-default-names",
@@ -31,15 +32,18 @@ module.exports = {
     "httpie",
     // jq is a sort of JSON grep
     "jq",
+    "lsd",
     // Mac App Store CLI: https://github.com/mas-cli/mas
     "mas",
     // Install some other useful utilities like `sponge`
     "moreutils",
     "nmap",
+    "nvm",
     "openconnect",
     "reattach-to-user-namespace",
     // better/more recent version of screen
     "homebrew/dupes/screen",
+    "ripgrep",
     "tmux",
     "todo-txt",
     "tree",
