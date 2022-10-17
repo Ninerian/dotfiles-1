@@ -45,3 +45,5 @@ export CONTAINER_HOST=ssh://vagrant@127.0.0.1:2222/run/podman/podman.sock
 export CONTAINER_SSHKEY=/Users/danielgrosse/dev/podman/.vagrant/machines/default/virtualbox/private_key
 
 export DICPATH=$HOME/Library/Spelling
+
+#   export DOCKER_HOST="unix://${HOME}/.colima/default/docker.sock"
