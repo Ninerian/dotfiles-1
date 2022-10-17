@@ -22,7 +22,7 @@ if [ $? -ne 0 ]; then
   # Keep-alive: update existing sudo time stamp until the script has finished
   while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
-  bot "Do you want me to setup this machine to allow you to run sudo without a password?\nPlease read here to see what I am doing:\nhttp://wiki.summercode.com/sudo_without_a_password_in_mac_os_x \n"
+  echo "Do you want me to setup this machine to allow you to run sudo without a password?\nPlease read here to see what I am doing:\nhttp://wiki.summercode.com/sudo_without_a_password_in_mac_os_x \n"
 
   read -r -p "Make sudo passwordless? [y|N] " response
 
@@ -192,7 +192,6 @@ if [[ $? != 0 ]]; then
     error "unable to install homebrew, script $0 abort!"
     exit 2
   fi
-  brew analytics off
 else
   ok
   bot "Homebrew"
@@ -283,7 +282,6 @@ if [[ $response =~ (y|yes|Y) ]];then
   require_brew fontconfig
   ./fonts/install.sh
   brew tap homebrew/cask-fonts
-  require_brew svn #required for roboto
   require_cask font-fontawesome
   require_cask font-awesome-terminal-fonts
   require_cask font-hack
@@ -308,6 +306,9 @@ require_brew nvm
 
 # nvm
 require_nvm stable
+
+# always pin versions (no surprises, consistent dev/build machines)
+npm config set save-exact true
 
 #####################################
 # Now we can switch to node.js mode
@@ -1314,6 +1315,6 @@ for app in "Activity Monitor" "Address Book" "Calendar" "Contacts" "cfprefsd" \
 	killall "${app}" >/dev/null 2>&1
 done
 
-brew update && brew upgrade && brew cleanup 
+brew update && brew upgrade && brew cleanup && brew cask cleanup
 
 bot "Woot! All done"
