@@ -34,10 +34,10 @@ module.exports = {
     // Mac App Store CLI: https://github.com/mas-cli/mas
     "mas",
     // Install some other useful utilities like `sponge`
-    "moreutils",
-    "nmap",
-    "openconnect",
-    "reattach-to-user-namespace",
+    'moreutils',
+    'nmap',
+    // 'openconnect',
+    'reattach-to-user-namespace',
     // better/more recent version of screen
     "homebrew/dupes/screen",
     "tmux",
@@ -64,16 +64,16 @@ module.exports = {
     "flux",
     "gpg-suite",
     //'ireadfast',
-    "iterm2",
-    "little-snitch",
-    "time-out",
-    "micro-snitch",
-    "signal",
+    'iterm2',
+    'little-snitch',
+    // 'macbreakz',
+    'micro-snitch',
+    // 'signal',
     //'macvim',
     "sizeup",
     //'sketchup',
-    "slack",
-    "the-unarchiver",
+    'slack',
+    // 'the-unarchiver',
     //'torbrowser',
     //'transmission',
     "visual-studio-code",
@@ -94,5 +94,17 @@ module.exports = {
     "trash",
     "vtop"
     // ,'yo'
-  ]
+  ],
+  mas: [
+    //com.apple.dt.Xcode (10.2.1)
+    '497799835',
+    //com.if.Amphetamine (4.1.6)
+    //'937984704',
+    //net.shinyfrog.bear (1.6.15)
+    //'1091189122',
+    //com.monosnap.monosnap (3.5.8)
+    //'540348655',
+    //com.app77.pwsafemac (4.17)
+    //'520993579',
+  ],
 };

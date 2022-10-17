@@ -39,11 +39,11 @@ source /usr/local/opt/nvm/nvm.sh --no-use
 
 autoload -U add-zsh-hook
 load-nvmrc() {
-    if [[ -f .nvmrc && -r .nvmrc ]]; then
-        nvm use &> /dev/null
-        elif [[ $(nvm version) != $(nvm version default)  ]]; then
-        nvm use default &> /dev/null
-    fi
+  if [[ -f .nvmrc && -r .nvmrc ]]; then
+    nvm use &> /dev/null
+  else
+    nvm use stable
+  fi
 }
 add-zsh-hook chpwd load-nvmrc
 load-nvmrc
