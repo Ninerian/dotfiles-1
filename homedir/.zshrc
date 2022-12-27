@@ -42,22 +42,13 @@ export ZSH_DISABLE_COMPFIX="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.dotfiles/oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(common-aliases colorize compleat dirpersist kube-ps1 git git-extras jenv history cp adb git-flow-avh grunt lein macos z docker docker-compose zsh-wakatime)
+plugins=(common-aliases colorize compleat dirpersist nvm kube-ps1 git git-extras jenv history cp adb git-flow-avh grunt lein macos z docker docker-compose zsh-wakatime)
 
 source $ZSH/oh-my-zsh.sh
 
 source /usr/local/opt/nvm/nvm.sh --no-use
 
 autoload -U add-zsh-hook
-load-nvmrc() {
-  if [[ -f .nvmrc && -r .nvmrc ]]; then
-    nvm use &> /dev/null
-  else
-    nvm use stable
-  fi
-}
-add-zsh-hook chpwd load-nvmrc
-load-nvmrc
 
 # Customize to your needs...
 unsetopt correct
@@ -70,16 +61,5 @@ ulimit -n 10240
 
 # Set default java
 
-export PATH="/usr/local/opt/mongodb-community@3.6/bin:$PATH"
-
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
-
-
-export PATH="$HOME/.poetry/bin:$PATH"
-
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"

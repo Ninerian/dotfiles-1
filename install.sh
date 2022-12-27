@@ -274,6 +274,21 @@ else
   ok "skipped. Install by running :PluginInstall within vim"
 fi
 
+bot "Emacs Setup"
+read -r -p "Install emacs? [y|N] " response
+if [[ $response =~ (y|yes|Y) ]];then
+  brew tap jimeh/emacs-builds
+  require_cask emacs-app-good
+  read -r -p "Do you want to install doom now? [y|N] " response
+  if [[ $response =~ (y|yes|Y) ]];then
+    bot "Install Doom config"
+    git clone --depth 1 --single-branch https://github.com/doomemacs/doomemacs ~/.emacs-config/doom
+    git clone --depth 1 --single-branch https://github.com/Ninerian/doom.d.git ~/.doom.d
+    ~/.emacs-config/bin/doom install
+  else
+    ok "skipped. Install documentation on https://github.com/doomemacs"
+  fi
+fi
 
 read -r -p "Install fonts? [y|N] " response
 if [[ $response =~ (y|yes|Y) ]];then
@@ -291,9 +306,25 @@ if [[ $response =~ (y|yes|Y) ]];then
   require_cask font-roboto-mono
   require_cask font-roboto-mono-for-powerline
   require_cask font-source-code-pro
+  require_cask font-alegreya
+  require_cask font-alegreya-sans
+  require_cask font-ibm-plex-mono
+  require_cask font-iosevka-nerd-font
+  require_cask font-jetbrains-mono
+  require_cask font-juliamono
+  require_cask font-merriweather
+  require_cask font-merriweather-sans
+  require_cask font-overpass
+  require_cask font-overpass-mono
+  require_cask font-overpass-nerd-font
   ok
 fi
 
+bot "Java setup"
+read -r -p "Install sdkman? [y|N] " response
+if [[ $response =~ (y|yes|Y) ]];then
+  curl -s "https://get.sdkman.io" | bash
+fi
 
 # if [[ -d "/Library/Ruby/Gems/2.0.0" ]]; then
 #   running "Fixing Ruby Gems Directory Permissions"

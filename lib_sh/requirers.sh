@@ -103,3 +103,12 @@ function require_nvm() {
     fi
     ok
 }
+
+function require_sdkman(){
+    running "sdk install $1 $2"
+    sdk install $1 $2
+    if [[ $? != 0 ]]; then
+        action "sdkman not found"
+    fi
+    ok
+}
