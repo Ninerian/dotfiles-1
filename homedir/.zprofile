@@ -15,6 +15,11 @@ setopt    sharehistory      #Share history across terminals
 setopt    incappendhistory  #Immediately append to the history file, not just when a term is killed
 
 ##############################################################################
+# homebrew setup
+##############################################################################
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+##############################################################################
 # z-zsh setup
 ##############################################################################
 . ~/.dotfiles/z-zsh/z.sh
