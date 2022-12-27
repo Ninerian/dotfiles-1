@@ -15,6 +15,7 @@ POWERLEVEL9K_NVM_FOREGROUND='000'
 POWERLEVEL9K_NVM_BACKGROUND='072'
 POWERLEVEL9K_SHOW_CHANGESET=true
 #export ZSH_THEME="random"
+export TERM=xterm-256color
 
 # Set to this to use case-sensitive completion
 export CASE_SENSITIVE="true"
@@ -30,7 +31,7 @@ export DISABLE_AUTO_TITLE="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.dotfiles/oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(colorize compleat dirpersist autojump git gulp history cp)
+plugins=(colorize compleat dirpersist autojump git git-extras gulp history cp adb git-flow-avh grunt lein osx z)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -52,3 +53,5 @@ unsetopt correct
 
 # run fortune on new terminal :)
 # fortune
+
+export PATH="$HOME/.yarn/bin:$PATH"
