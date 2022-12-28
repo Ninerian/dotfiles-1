@@ -285,7 +285,7 @@ if [[ $response =~ (y|yes|Y) ]];then
     bot "Install Doom config"
     git clone --depth 1 --single-branch https://github.com/doomemacs/doomemacs ~/.emacs-config/doom
     git clone --depth 1 --single-branch https://github.com/Ninerian/doom.d.git ~/.doom.d
-    ~/.emacs-config/bin/doom install
+    ~/.emacs-config/doom/bin/doom install
   else
     ok "skipped. Install documentation on https://github.com/doomemacs"
   fi
