@@ -278,8 +278,8 @@ fi
 bot "Emacs Setup"
 read -r -p "Install emacs? [y|N] " response
 if [[ $response =~ (y|yes|Y) ]];then
-  brew tap jimeh/emacs-builds
-  require_cask emacs-app-good
+  brew tap d12frosted/emacs-plus
+  brew install emacs-plus@29 --with-native-comp --with-imagemagick --with-no-frame-refocus --with-xwidgets
   read -r -p "Do you want to install doom now? [y|N] " response
   if [[ $response =~ (y|yes|Y) ]];then
     bot "Install Doom config"
