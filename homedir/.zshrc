@@ -1,6 +1,5 @@
 # Fig pre block. Keep at the top of this file.
 export PATH="${PATH}:${HOME}/.local/bin"
-eval "$(fig init zsh pre)"
 
 # Path to your oh-my-zsh configuration.
 export ZSH=$HOME/.dotfiles/oh-my-zsh
@@ -46,7 +45,7 @@ plugins=(common-aliases colorize compleat dirpersist nvm kube-ps1 git git-extras
 
 source $ZSH/oh-my-zsh.sh
 
-source /usr/local/opt/nvm/nvm.sh --no-use
+source ~/.nvm/nvm.sh --no-use
 
 autoload -U add-zsh-hook
 
