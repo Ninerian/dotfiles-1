@@ -107,3 +107,10 @@ alias kdp='kubectl describe pod'
 alias kdn='kubectl describe node'
 
 alias e='ec'
+
+alias -- -='cd -'
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
+alias ......='cd ../../../../..'
