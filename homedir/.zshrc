@@ -35,9 +35,13 @@ plugins=(colorize compleat dirpersist autojump git git-extras gulp history cp ad
 
 source $ZSH/oh-my-zsh.sh
 
-source /usr/local/opt/nvm/nvm.sh --no-use
-
 autoload -U add-zsh-hook
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+
+
 load-nvmrc() {
   if [[ -f .nvmrc && -r .nvmrc ]]; then
     nvm use &> /dev/null
@@ -50,8 +54,5 @@ load-nvmrc
 
 # Customize to your needs...
 unsetopt correct
-
-# run fortune on new terminal :)
-# fortune
 
 export PATH="$HOME/.yarn/bin:$PATH"
