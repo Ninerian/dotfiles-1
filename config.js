@@ -86,7 +86,7 @@ module.exports = {
     'iterm2',
     // 'little-snitch',
     // 'macbreakz',
-    // 'micro-snitch',
+    //'micro-snitch',
     // 'signal',
     //'macvim',
     "sizeup",
